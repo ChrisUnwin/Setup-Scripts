@@ -1,25 +1,25 @@
 -- #############################################################
 
-# Make sure you create a new empty database to run this against #
-# Creates the DMDatabase Sample Database for demonstrations #
+-- Make sure you create a new empty database to run this against 
+-- Creates the DMDatabase Sample Database for demonstrations 
 
 -- ############################################################# */
 
 create table DM_CUSTOMER
     (
-    customer_id varchar(10) not null,
-    customer_firstname varchar(60),
-    customer_lastname varchar(60),
-    customer_gender varchar(1),
-    customer_company_name varchar(60),
-    customer_street_address varchar(60),
-    customer_region varchar(60),
-    customer_country varchar(60),
-    customer_email varchar(60),
-    customer_telephone varchar(60),
-    customer_zipcode varchar(60),
-    credit_card_type_id varchar(2),
-    customer_credit_card_number varchar(60)
+    customer_id nvarchar(10) not null,
+    customer_firstname nvarchar(60),
+    customer_lastname nvarchar(60),
+    customer_gender nvarchar(1),
+    customer_company_name nvarchar(60),
+    customer_street_address nvarchar(60),
+    customer_region nvarchar(60),
+    customer_country nvarchar(60),
+    customer_email nvarchar(60),
+    customer_telephone nvarchar(60),
+    customer_zipcode nvarchar(60),
+    credit_card_type_id nvarchar(2),
+    customer_credit_card_number nvarchar(60)
     );
 
 CREATE TABLE DM_CUSTOMER_ASXML_IDAttr
@@ -30,24 +30,24 @@ CREATE TABLE DM_CUSTOMER_ASXML_IDAttr
 );
 create table DM_CUSTOMER_NOTES
     (
-    customer_id varchar(10) not null,
-    customer_firstname varchar(60),
-    customer_lastname varchar(60),
+    customer_id nvarchar(10) not null,
+    customer_firstname nvarchar(60),
+    customer_lastname nvarchar(60),
     customer_notes_entry_date datetime not null,
-    customer_note varchar(2000)
+    customer_note nvarchar(2000)
     );
 
 create table DM_INVOICE
     (
-    invoice_number varchar(10) not null,
+    invoice_number nvarchar(10) not null,
     invoice_date   datetime,
-    invoice_customer_id varchar(60)
+    invoice_customer_id nvarchar(60)
     );
 
 create table DM_INVOICE_LINE
     (
-    invoice_number varchar(10) not null,
-    inventory_item_id  varchar(10) not null,
+    invoice_number nvarchar(10) not null,
+    inventory_item_id  nvarchar(10) not null,
     invoice_line_quantity int,
     invoice_line_sale_price decimal(10,2)
     );
@@ -55,41 +55,41 @@ create table DM_INVOICE_LINE
 create table DM_INVOICE_LINE_HISTORY
     (
     identCol int IDENTITY (1, 1) NOT NULL,
-    invoice_number varchar(6) not null,
-    item_id varchar(6) not null,
+    invoice_number nvarchar(6) not null,
+    item_id nvarchar(6) not null,
     quantity int
     );
  
 create table DM_CREDIT_CARD_TYPE
    (
-   credit_card_type_id   varchar(2) not null,
-   credit_card_type_name varchar(60)
+   credit_card_type_id   nvarchar(2) not null,
+   credit_card_type_name nvarchar(60)
    );
 
 create table DM_INVENTORY_ITEM
     (
-    inventory_item_id varchar(10) not null,
-    inventory_item_name varchar(60)
+    inventory_item_id nvarchar(10) not null,
+    inventory_item_name nvarchar(60)
     );
  
 create table DM_SUPPLIERS
     (
     supplier_id int not null,
-    supplier_name varchar(60)
+    supplier_name nvarchar(60)
     );
 
 create table DM_EMPLOYEE
     (
     person_id int not null,
     assignment_id int not null,
-    emp_id varchar(50),
-    first_name varchar(40),
-    last_name varchar(40),
-    full_name varchar(40),
+    emp_id nvarchar(50),
+    first_name nvarchar(40),
+    last_name nvarchar(40),
+    full_name nvarchar(40),
     birth_date datetime,
-    gender varchar(1),
-    title varchar(10),
-    emp_data varchar(100)
+    gender nvarchar(1),
+    title nvarchar(10),
+    emp_data nvarchar(100)
     );
 
 create table DM_EMP_AUDIT
@@ -97,19 +97,19 @@ create table DM_EMP_AUDIT
     identCol int IDENTITY (1, 1) NOT NULL,
     person_id int not null,
     assignment_id int not null,
-    emp_id varchar(10),
-    first_name varchar(40),
-    last_name varchar(40),
-    full_name varchar(40)
+    emp_id nvarchar(10),
+    first_name nvarchar(40),
+    last_name nvarchar(40),
+    full_name nvarchar(40)
     );
 
 create table DM_ASSIGNMENT
     (
     assignment_id int not null,
     person_id int not null,
-    emp_id varchar(10),
-    emp_jobtitle varchar(100),
-    assignment_notes varchar(1000)
+    emp_id nvarchar(10),
+    emp_jobtitle nvarchar(100),
+    assignment_notes nvarchar(1000)
     );
 
 CREATE TABLE DM_CUSTOMER_CONTACTS
@@ -1200,10 +1200,10 @@ AS
 BEGIN
   DECLARE @person_id integer
   DECLARE @assignment_id integer
-  DECLARE @emp_id varchar(10)
-  DECLARE @first_name varchar(40)
-  DECLARE @last_name varchar(40)
-  DECLARE @full_name varchar(40)
+  DECLARE @emp_id nvarchar(10)
+  DECLARE @first_name nvarchar(40)
+  DECLARE @last_name nvarchar(40)
+  DECLARE @full_name nvarchar(40)
   Select @person_id=person_id, @assignment_id=assignment_id, @emp_id=emp_id, @first_name=first_name, @last_name=last_name, @full_name=full_name from DM_EMPLOYEE;
   insert into DM_EMP_AUDIT (person_id,assignment_id, emp_id,first_name,last_name,full_name) 
      values (@person_id,@assignment_id, @emp_id,@first_name,@last_name,@full_name);
