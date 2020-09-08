@@ -1,0 +1,41 @@
+stages:
+  - DatabaseBuild
+  - CreateRelease
+  - DeployToIntegration
+
+Build:
+  stage: DatabaseBuild
+  tags: 
+   - sql
+  script: 
+   - $projectPath = $env:CI_PROJECT_DIR
+   - $project = "$projectPath\DoggosAreCoolDB\DoggosAreCoolDB.sqlproj"
+   - echo "Building project $project"
+   - $validatedProject = $project | Invoke-DatabaseBuild -TemporaryDatabaseServer "Data Source=PSE-LT-CHRISU\"
+   - $buildArtifact = $validatedProject | New-DatabaseBuildArtifact -PackageId DoggosAreCool.Database -PackageVersion 1.$env:CI_PIPELINE_ID
+   - echo "Exporting artifact to $env:CI_PROJECT_DIR\Export"
+   - $buildArtifact | Export-DatabaseBuildArtifact -Path "$env:CI_PROJECT_DIR\Export"
+  artifacts:
+    paths:
+     - $env:CI_PROJECT_DIR\Export\DoggosAreCool.Database.1.$env:CI_PIPELINE_ID.nupkg
+    expire_in: 1 week
+
+CreateRelease:
+  stage: CreateRelease
+  tags: 
+   - sql
+  script: 
+   - $integrationDB = New-DatabaseConnection -ServerInstance "PSE-LT-CHRISU\" -Database "BlogsDotRedgate_Integration"
+   - $buildArtifact = "$env:CI_PROJECT_DIR\Export\DoggosAreCool.Database.1.$env:CI_PIPELINE_ID.nupkg"
+   - echo "Creating Release Artifact for DoggosAreCuteDB - check C:\DatabaseDeploymentResources\DoggosAreCuteInc\ReleaseArtifacts\$env:CI_PIPELINE_ID\Integration for more information"
+   - $releaseArtifact = New-DatabaseReleaseArtifact -Source $buildArtifact -Target $integrationDB
+   - $releaseArtifact | Export-DatabaseReleaseArtifact -Path "C:\DatabaseDeploymentResources\DoggosAreCuteInc\ReleaseArtifacts\$env:CI_PIPELINE_ID\Integration" -Format Folder
+
+Integration:
+  stage: DeployToIntegration
+  tags: 
+   - sql
+  script: 
+   - $integrationDB = New-DatabaseConnection -ServerInstance "PSE-LT-CHRISU\" -Database "BlogsDotRedgate_Integration"
+   - echo "Deploying changes to Integration"
+   - Import-DatabaseReleaseArtifact -Path "C:\DatabaseDeploymentResources\DoggosAreCuteInc\ReleaseArtifacts\$env:CI_PIPELINE_ID\Integration" | Use-DatabaseReleaseArtifact -DeployTo $integrationDB

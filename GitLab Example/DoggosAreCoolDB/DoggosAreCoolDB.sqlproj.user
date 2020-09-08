@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetDatabase>BlogsDotRedgate_Dev</TargetDatabase>
+    <TargetConnectionString>Data Source=PSE-LT-CHRISU\;Initial Catalog=BlogsDotRedgate_Dev;Integrated Security=True;Pooling=False;Encrypt=False;Trust Server Certificate=True;Multi Subnet Failover=False</TargetConnectionString>
+  </PropertyGroup>
+</Project>
