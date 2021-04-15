@@ -1209,3 +1209,21 @@ BEGIN
      values (@person_id,@assignment_id, @emp_id,@first_name,@last_name,@full_name);
 END
 GO
+
+UPDATE dbo.DM_CUSTOMER_NOTES
+SET customer_firstname =
+    (
+        SELECT c.customer_firstname 
+		FROM dbo.DM_CUSTOMER c
+		WHERE dbo.DM_CUSTOMER_NOTES.customer_id = c.customer_id
+    );
+GO
+UPDATE dbo.DM_CUSTOMER_NOTES
+SET customer_lastname =
+    (
+        SELECT c.customer_lastname
+		FROM dbo.DM_CUSTOMER c
+		WHERE dbo.DM_CUSTOMER_NOTES.customer_id = c.customer_id
+    );
+GO
+
