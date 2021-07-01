@@ -30,11 +30,13 @@ CREATE TABLE DM_CUSTOMER_ASXML_IDAttr
 );
 create table DM_CUSTOMER_NOTES
     (
-    customer_id nvarchar(10) not null,
+    customer_note_id INT NOT NULL,
+	customer_id nvarchar(10) not null,
     customer_firstname nvarchar(60),
     customer_lastname nvarchar(60),
     customer_notes_entry_date datetime not null,
-    customer_note nvarchar(2000)
+    customer_note nvarchar(2000),
+	CONSTRAINT [PK_DM_CUSTOMER_NOTES] PRIMARY KEY (customer_note_id ASC)
     );
 
 create table DM_INVOICE
@@ -345,31 +347,31 @@ insert into DM_CUSTOMER_ASXML_IDAttr (customer_id, customer_data) values ('10000
 
 -- ### DM_CUSTOMER_NOTES ###
 
-insert into DM_CUSTOMER_NOTES values ('1000007','','',convert(datetime,'20000320',103),'Cathie contact number is (213) 555-8081');
-insert into DM_CUSTOMER_NOTES values ('1000089','','',convert(datetime,'19990311',103),'Herschel also purchased as Melanie Jones');
-insert into DM_CUSTOMER_NOTES values ('1000001','','',convert(datetime,'20010503',103),'Called in on 555-1234.');
-insert into DM_CUSTOMER_NOTES values ('1000002','','',convert(datetime,'20010111',103),'Jathbiyya returned goods a number of times - always query');
-insert into DM_CUSTOMER_NOTES values ('1000020','','',convert(datetime,'20010412',103),'Bad Credit Rating. Recently cleaned up');
-insert into DM_CUSTOMER_NOTES values ('1000066','','',convert(datetime,'20000311',103),'Indicated her friend John Smith would sign.');
-insert into DM_CUSTOMER_NOTES values ('1000005','','',convert(datetime,'20011002',103),'Shanika is Never available for courier - blames us');
-insert into DM_CUSTOMER_NOTES values ('1000042','','',convert(datetime,'20001123',103),'Extremely rude. Feel free to decline sale if need be.');
-insert into DM_CUSTOMER_NOTES values ('1000098','','',convert(datetime,'20010526',103),'Courier always charges extra shipping to this address.');
-insert into DM_CUSTOMER_NOTES values ('1000073','','',convert(datetime,'19991014',103),'Also known as Sam Williams');
-insert into DM_CUSTOMER_NOTES values ('1000051','','',convert(datetime,'20011225',103),'Do not ship perishables to this address very slow courier');
-insert into DM_CUSTOMER_NOTES values ('1000017','','',convert(datetime,'20010406',103),'This customer is actually a PO box - take care.');
-insert into DM_CUSTOMER_NOTES values ('1000031','','',convert(datetime,'20011226',103),'Call (654) 555-0734 prior to delivery');
-insert into DM_CUSTOMER_NOTES values ('1000099','','',convert(datetime,'20010326',103),'Decline all further sales.');
-insert into DM_CUSTOMER_NOTES values ('1000091','','',convert(datetime,'20000329',103),'Do not ship untill payment received.');
-insert into DM_CUSTOMER_NOTES values ('1000043','','',convert(datetime,'20000727',103),'Has a phobia about dogs - never mention them.');
-insert into DM_CUSTOMER_NOTES values ('1000011','','',convert(datetime,'20000114',103),'call on (321) 555-2234');
-insert into DM_CUSTOMER_NOTES values ('1000078','','',convert(datetime,'19990704',103),'Dr. Jim Williams is contact at 555-1234');
-insert into DM_CUSTOMER_NOTES values ('1000058','','',convert(datetime,'20000209',103),'Courier always charges extra shipping to this address');
-insert into DM_CUSTOMER_NOTES values ('1000087','','',convert(datetime,'20001130',103),'Decline all further sales.');
-insert into DM_CUSTOMER_NOTES values ('1000012','','',convert(datetime,'20011204',103),'Always asks for a discount. Cannot do this everytime.');
-insert into DM_CUSTOMER_NOTES values ('1000012','','',convert(datetime,'19991113',103),'Do not ship perishables to this address. Courier invariably slow.');
-insert into DM_CUSTOMER_NOTES values ('1000076','','',convert(datetime,'20010418',103),'Do not ship untill payment received.');
-insert into DM_CUSTOMER_NOTES values ('1000036','','',convert(datetime,'20010413',103),'Decline all further sales.');
-insert into DM_CUSTOMER_NOTES values ('1000027','','',convert(datetime,'20020126',103),'Courier always charges extra shipping to this address');
+insert into DM_CUSTOMER_NOTES values (1,'1000007','','',convert(datetime,'20000320',103),'Cathie contact number is (213) 555-8081');
+insert into DM_CUSTOMER_NOTES values (2,'1000089','','',convert(datetime,'19990311',103),'Herschel also purchased as Melanie Jones');
+insert into DM_CUSTOMER_NOTES values (3,'1000001','','',convert(datetime,'20010503',103),'Called in on 555-1234.');
+insert into DM_CUSTOMER_NOTES values (4,'1000002','','',convert(datetime,'20010111',103),'Jathbiyya returned goods a number of times - always query');
+insert into DM_CUSTOMER_NOTES values (5,'1000020','','',convert(datetime,'20010412',103),'Bad Credit Rating. Recently cleaned up');
+insert into DM_CUSTOMER_NOTES values (6,'1000066','','',convert(datetime,'20000311',103),'Indicated her friend John Smith would sign.');
+insert into DM_CUSTOMER_NOTES values (7,'1000005','','',convert(datetime,'20011002',103),'Shanika is Never available for courier - blames us');
+insert into DM_CUSTOMER_NOTES values (8,'1000042','','',convert(datetime,'20001123',103),'Extremely rude. Feel free to decline sale if need be.');
+insert into DM_CUSTOMER_NOTES values (9,'1000098','','',convert(datetime,'20010526',103),'Courier always charges extra shipping to this address.');
+insert into DM_CUSTOMER_NOTES values (10,'1000073','','',convert(datetime,'19991014',103),'Also known as Sam Williams');
+insert into DM_CUSTOMER_NOTES values (11,'1000051','','',convert(datetime,'20011225',103),'Do not ship perishables to this address very slow courier');
+insert into DM_CUSTOMER_NOTES values (12,'1000017','','',convert(datetime,'20010406',103),'This customer is actually a PO box - take care.');
+insert into DM_CUSTOMER_NOTES values (13,'1000031','','',convert(datetime,'20011226',103),'Call (654) 555-0734 prior to delivery');
+insert into DM_CUSTOMER_NOTES values (14,'1000099','','',convert(datetime,'20010326',103),'Decline all further sales.');
+insert into DM_CUSTOMER_NOTES values (15,'1000091','','',convert(datetime,'20000329',103),'Do not ship untill payment received.');
+insert into DM_CUSTOMER_NOTES values (16,'1000043','','',convert(datetime,'20000727',103),'Has a phobia about dogs - never mention them.');
+insert into DM_CUSTOMER_NOTES values (17,'1000011','','',convert(datetime,'20000114',103),'call on (321) 555-2234');
+insert into DM_CUSTOMER_NOTES values (18,'1000078','','',convert(datetime,'19990704',103),'Dr. Jim Williams is contact at 555-1234');
+insert into DM_CUSTOMER_NOTES values (19,'1000058','','',convert(datetime,'20000209',103),'Courier always charges extra shipping to this address');
+insert into DM_CUSTOMER_NOTES values (20,'1000087','','',convert(datetime,'20001130',103),'Decline all further sales.');
+insert into DM_CUSTOMER_NOTES values (21,'1000012','','',convert(datetime,'20011204',103),'Always asks for a discount. Cannot do this everytime.');
+insert into DM_CUSTOMER_NOTES values (22,'1000012','','',convert(datetime,'19991113',103),'Do not ship perishables to this address. Courier invariably slow.');
+insert into DM_CUSTOMER_NOTES values (23,'1000076','','',convert(datetime,'20010418',103),'Do not ship untill payment received.');
+insert into DM_CUSTOMER_NOTES values (24,'1000036','','',convert(datetime,'20010413',103),'Decline all further sales.');
+insert into DM_CUSTOMER_NOTES values (25,'1000027','','',convert(datetime,'20020126',103),'Courier always charges extra shipping to this address');
 
 -- ### DM_INVENTORY_ITEM ###
 
@@ -1155,8 +1157,6 @@ alter table DM_EMP_AUDIT add primary key (identCol);
 
 create unique index empInd1 on DM_EMPLOYEE (person_id, emp_id);
 create unique index asgnInd1 on DM_ASSIGNMENT (person_id, assignment_id);
-create unique index cnInd1 on DM_CUSTOMER_NOTES (customer_id, customer_notes_entry_date);
-
   
 alter table DM_CUSTOMER_NOTES add constraint CN_FK foreign key (customer_id) 
      references DM_CUSTOMER (customer_id);
@@ -1168,17 +1168,6 @@ alter table DM_INVOICE_LINE add constraint I4_FK foreign key (inventory_item_id)
      references DM_INVENTORY_ITEM (inventory_item_id);
 ALTER TABLE [dbo].[DM_CUSTOMER_CONTACTS] add primary key ([CONTACT_ID]);
 
-
-
--- #############################################################
--- This file creates the Data Masker sample tables
---   
---   Unless manually altered, the tables will be created in 
---   the default database of the login in which this file is run.  
---
---   Data Masker for SQL Server Sample Schema
---  
--- ############################################################# */
 
 GO
 create trigger IL_trig1
@@ -1226,4 +1215,3 @@ SET customer_lastname =
 		WHERE dbo.DM_CUSTOMER_NOTES.customer_id = c.customer_id
     );
 GO
-
