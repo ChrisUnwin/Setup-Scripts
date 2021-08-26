@@ -1,0 +1,34 @@
+1 - What is sensitive data and what is a data breach?
+>> Data Subjects, Controllers, Processors
+>> Structured vs semi-structured data
+>> PII, PHI etc.
+>> How can a data breach happen, where from, example
+>> How can data flow between companies?
+>> Important roles at Controllers / Processors 
+>> Dark Web / Abuse of data
+>> Finally: What are data protection regulations
+
+2 - ROW Data Protection Legislation
+>> GDPR
+>> POPIA
+>> PCI DSS
+>> Australia & New Zealand
+>> Any others
+
+3 - AMER Based Data Protection Legislation
+>> Are no federal laws
+>> HIPAA 
+>> SOX
+>> CCPA
+>> SHIELD
+>> NIST 800-53
+>> LGPD
+>> Any others
+
+4 - How can people comply with Data Privacy Legislation?
+>> Patching / Keeping systems up to date
+>> Encryption
+>> Permissions and Access Management
+>> Data Masking (Dynamic / Static)
+>> Redaction / Deletion
+>> Process & Controls e.g. Audits and Management Boards
