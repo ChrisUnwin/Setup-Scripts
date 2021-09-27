@@ -1,0 +1,1 @@
+sp_rename 'dbo.DM_EMPLOYEE_AUDIT', 'DM_EMP_AUDIT';

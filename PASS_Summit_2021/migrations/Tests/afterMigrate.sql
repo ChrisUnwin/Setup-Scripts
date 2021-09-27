@@ -1,0 +1,1 @@
+EXEC tsqlt.runall

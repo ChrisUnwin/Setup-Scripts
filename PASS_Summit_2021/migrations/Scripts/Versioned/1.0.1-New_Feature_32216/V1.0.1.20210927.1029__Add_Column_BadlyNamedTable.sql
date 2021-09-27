@@ -1,0 +1,1 @@
+ALTER TABLE dbo.BadlyNamedTable ADD PoorColumn2 NVARCHAR(90);
